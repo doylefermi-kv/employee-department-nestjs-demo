@@ -1,6 +1,7 @@
 import { Resolver, Query, Mutation, Args, ResolveField } from '@nestjs/graphql';
 import { EmpDeptService } from 'src/empdept/empdept.service';
 import { Employee } from 'src/employees/entities/employee.entity';
+import DepartmentEmployeesLoader from 'src/loader/departmentEmployees.loader';
 import { DepartmentsService } from './departments.service';
 import { CreateDepartmentInput } from './dto/create-department.input';
 import { UpdateDepartmentInput } from './dto/update-department.input';
@@ -9,7 +10,7 @@ import { UpdateDepartmentInput } from './dto/update-department.input';
 export class DepartmentsResolver {
   constructor(
     private readonly departmentsService: DepartmentsService,
-    private readonly empDeptService: EmpDeptService,
+    private readonly departmentEmployeesLoader: DepartmentEmployeesLoader,
   ) {}
 
   @Mutation('createDepartment')
@@ -46,14 +47,10 @@ export class DepartmentsResolver {
 
   @ResolveField('employees')
   async employees(department) {
-    const employeesOfDepartment = await this.empDeptService.getEmployees(
-      department.id,
-    );
+    const employeesOfDepartment = await this.departmentEmployeesLoader
+      .getEmployeeDepartmentsLoader()
+      .load(department.id);
 
-    const employees: Employee[] = [];
-    employeesOfDepartment.forEach(async (empDept) =>
-      employees.push(empDept.employee),
-    );
-    return employees;
+    return employeesOfDepartment;
   }
 }

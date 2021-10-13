@@ -8,6 +8,7 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { EmpDeptModule } from './empdept/empdept.module';
+import { DataloaderModule } from './loader/dataloader.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { EmpDeptModule } from './empdept/empdept.module';
     EmpDeptModule,
     AppGraphQLModule,
     DatabaseModule,
+    DataloaderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
