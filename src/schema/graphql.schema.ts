@@ -16,11 +16,12 @@ export interface UpdateDepartmentInput {
 }
 
 export interface CreateEmployeeInput {
-    exampleField?: Nullable<number>;
+    name: string;
 }
 
 export interface UpdateEmployeeInput {
-    id: number;
+    id: string;
+    name: string;
 }
 
 export interface Department {
@@ -30,8 +31,8 @@ export interface Department {
 export interface IQuery {
     departments(): Nullable<Department>[] | Promise<Nullable<Department>[]>;
     department(id: number): Nullable<Department> | Promise<Nullable<Department>>;
-    employees(): Nullable<Employee>[] | Promise<Nullable<Employee>[]>;
-    employee(id: number): Nullable<Employee> | Promise<Nullable<Employee>>;
+    getEmployees(): Nullable<Nullable<Employee>[]> | Promise<Nullable<Nullable<Employee>[]>>;
+    getEmployee(id: string): Nullable<Employee> | Promise<Nullable<Employee>>;
 }
 
 export interface IMutation {
@@ -40,11 +41,12 @@ export interface IMutation {
     removeDepartment(id: number): Nullable<Department> | Promise<Nullable<Department>>;
     createEmployee(createEmployeeInput: CreateEmployeeInput): Employee | Promise<Employee>;
     updateEmployee(updateEmployeeInput: UpdateEmployeeInput): Employee | Promise<Employee>;
-    removeEmployee(id: number): Nullable<Employee> | Promise<Nullable<Employee>>;
+    removeEmployee(id: string): Nullable<Employee> | Promise<Nullable<Employee>>;
 }
 
 export interface Employee {
-    exampleField?: Nullable<number>;
+    id: string;
+    name: string;
 }
 
 type Nullable<T> = T | null;

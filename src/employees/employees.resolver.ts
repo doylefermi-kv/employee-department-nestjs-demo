@@ -8,27 +8,34 @@ export class EmployeesResolver {
   constructor(private readonly employeesService: EmployeesService) {}
 
   @Mutation('createEmployee')
-  create(@Args('createEmployeeInput') createEmployeeInput: CreateEmployeeInput) {
+  create(
+    @Args('createEmployeeInput') createEmployeeInput: CreateEmployeeInput,
+  ) {
     return this.employeesService.create(createEmployeeInput);
   }
 
-  @Query('employees')
+  @Query('getEmployees')
   findAll() {
     return this.employeesService.findAll();
   }
 
-  @Query('employee')
-  findOne(@Args('id') id: number) {
+  @Query('getEmployee')
+  findOne(@Args('id') id: string) {
     return this.employeesService.findOne(id);
   }
 
   @Mutation('updateEmployee')
-  update(@Args('updateEmployeeInput') updateEmployeeInput: UpdateEmployeeInput) {
-    return this.employeesService.update(updateEmployeeInput.id, updateEmployeeInput);
+  update(
+    @Args('updateEmployeeInput') updateEmployeeInput: UpdateEmployeeInput,
+  ) {
+    return this.employeesService.update(
+      updateEmployeeInput.id,
+      updateEmployeeInput,
+    );
   }
 
   @Mutation('removeEmployee')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.employeesService.remove(id);
   }
 }

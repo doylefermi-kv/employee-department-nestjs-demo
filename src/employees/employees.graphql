@@ -1,24 +1,24 @@
 type Employee {
-  # Example field (placeholder)
-  exampleField: Int
+  id: ID!
+  name: String!
 }
 
 input CreateEmployeeInput {
-  # Example field (placeholder)
-  exampleField: Int
+  name: String!
 }
 
 input UpdateEmployeeInput {
-  id: Int!
+  id: ID!
+  name: String!
 }
 
 type Query {
-  employees: [Employee]!
-  employee(id: Int!): Employee
+  getEmployees: [Employee]
+  getEmployee(id: ID!): Employee
 }
 
 type Mutation {
   createEmployee(createEmployeeInput: CreateEmployeeInput!): Employee!
   updateEmployee(updateEmployeeInput: UpdateEmployeeInput!): Employee!
-  removeEmployee(id: Int!): Employee
+  removeEmployee(id: ID!): Employee
 }

@@ -1,1 +1,3 @@
-export class CreateEmployeeInput {}
+export class CreateEmployeeInput {
+  name: string;
+}
