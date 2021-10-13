@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { EmpDeptModule } from './empdept/empdept.module';
 import { DataloaderModule } from './loader/dataloader.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -22,12 +23,13 @@ import { DataloaderModule } from './loader/dataloader.module';
         PORT: Joi.number(),
       }),
     }),
-    EmployeesModule,
-    DepartmentsModule,
-    EmpDeptModule,
+    // EmployeesModule,
+    // DepartmentsModule,
+    // EmpDeptModule,
     AppGraphQLModule,
     DatabaseModule,
     DataloaderModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

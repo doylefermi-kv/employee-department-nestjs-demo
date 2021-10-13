@@ -4,13 +4,16 @@ import { join } from 'path';
 
 @Module({
   imports: [
+    // GraphQLModule.forRoot({
+    //   debug: true,
+    //   playground: true,
+    //   typePaths: ['./**/*.graphql'],
+    //   definitions: {
+    //     path: join(process.cwd(), 'src/schema/graphql.schema.ts'),
+    //   },
+    // }),
     GraphQLModule.forRoot({
-      debug: true,
-      playground: true,
-      typePaths: ['./**/*.graphql'],
-      definitions: {
-        path: join(process.cwd(), 'src/schema/graphql.schema.ts'),
-      },
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
   ],
 })
