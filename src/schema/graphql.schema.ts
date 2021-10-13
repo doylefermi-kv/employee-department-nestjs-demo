@@ -8,11 +8,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface CreateDepartmentInput {
-    exampleField?: Nullable<number>;
+    name: string;
 }
 
 export interface UpdateDepartmentInput {
-    id: number;
+    id: string;
+    name: string;
 }
 
 export interface CreateEmployeeInput {
@@ -25,12 +26,13 @@ export interface UpdateEmployeeInput {
 }
 
 export interface Department {
-    exampleField?: Nullable<number>;
+    id: string;
+    name: string;
 }
 
 export interface IQuery {
-    departments(): Nullable<Department>[] | Promise<Nullable<Department>[]>;
-    department(id: number): Nullable<Department> | Promise<Nullable<Department>>;
+    getDepartments(): Nullable<Nullable<Department>[]> | Promise<Nullable<Nullable<Department>[]>>;
+    getDepartment(id: string): Nullable<Department> | Promise<Nullable<Department>>;
     getEmployees(): Nullable<Nullable<Employee>[]> | Promise<Nullable<Nullable<Employee>[]>>;
     getEmployee(id: string): Nullable<Employee> | Promise<Nullable<Employee>>;
 }
@@ -38,7 +40,7 @@ export interface IQuery {
 export interface IMutation {
     createDepartment(createDepartmentInput: CreateDepartmentInput): Department | Promise<Department>;
     updateDepartment(updateDepartmentInput: UpdateDepartmentInput): Department | Promise<Department>;
-    removeDepartment(id: number): Nullable<Department> | Promise<Nullable<Department>>;
+    removeDepartment(id: string): Nullable<Department> | Promise<Nullable<Department>>;
     createEmployee(createEmployeeInput: CreateEmployeeInput): Employee | Promise<Employee>;
     updateEmployee(updateEmployeeInput: UpdateEmployeeInput): Employee | Promise<Employee>;
     removeEmployee(id: string): Nullable<Employee> | Promise<Nullable<Employee>>;

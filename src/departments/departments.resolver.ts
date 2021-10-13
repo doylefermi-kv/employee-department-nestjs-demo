@@ -8,27 +8,34 @@ export class DepartmentsResolver {
   constructor(private readonly departmentsService: DepartmentsService) {}
 
   @Mutation('createDepartment')
-  create(@Args('createDepartmentInput') createDepartmentInput: CreateDepartmentInput) {
+  create(
+    @Args('createDepartmentInput') createDepartmentInput: CreateDepartmentInput,
+  ) {
     return this.departmentsService.create(createDepartmentInput);
   }
 
-  @Query('departments')
+  @Query('getDepartments')
   findAll() {
     return this.departmentsService.findAll();
   }
 
-  @Query('department')
-  findOne(@Args('id') id: number) {
+  @Query('getDepartment')
+  findOne(@Args('id') id: string) {
     return this.departmentsService.findOne(id);
   }
 
   @Mutation('updateDepartment')
-  update(@Args('updateDepartmentInput') updateDepartmentInput: UpdateDepartmentInput) {
-    return this.departmentsService.update(updateDepartmentInput.id, updateDepartmentInput);
+  update(
+    @Args('updateDepartmentInput') updateDepartmentInput: UpdateDepartmentInput,
+  ) {
+    return this.departmentsService.update(
+      updateDepartmentInput.id,
+      updateDepartmentInput,
+    );
   }
 
   @Mutation('removeDepartment')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.departmentsService.remove(id);
   }
 }

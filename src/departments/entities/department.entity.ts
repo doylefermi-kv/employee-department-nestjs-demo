@@ -1,1 +1,10 @@
-export class Department {}
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
+export class Department {
+  @PrimaryGeneratedColumn()
+  public id!: string;
+
+  @Column()
+  public name!: string;
+}

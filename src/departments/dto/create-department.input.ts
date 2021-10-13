@@ -1,1 +1,3 @@
-export class CreateDepartmentInput {}
+export class CreateDepartmentInput {
+  name: string;
+}
