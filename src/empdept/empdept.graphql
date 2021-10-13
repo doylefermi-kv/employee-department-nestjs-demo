@@ -1,0 +1,13 @@
+type EmpDept {
+  employeeId: ID!
+  departmentId: ID!
+}
+
+input AddEmpDeptInput {
+  employeeId: ID!
+  departmentId: ID!
+}
+
+type Mutation {
+  addEmpDept(addEmpDeptInput: AddEmpDeptInput!): EmpDept!
+}

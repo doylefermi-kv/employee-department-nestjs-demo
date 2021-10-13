@@ -7,6 +7,7 @@ import { AppGraphQLModule } from './graphql/graphql.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
+import { EmpDeptModule } from './empdept/empdept.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import * as Joi from 'joi';
     }),
     EmployeesModule,
     DepartmentsModule,
+    EmpDeptModule,
     AppGraphQLModule,
     DatabaseModule,
   ],

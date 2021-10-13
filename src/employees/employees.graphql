@@ -1,6 +1,7 @@
 type Employee {
   id: ID!
   name: String!
+  departments: [Department]
 }
 
 input CreateEmployeeInput {
